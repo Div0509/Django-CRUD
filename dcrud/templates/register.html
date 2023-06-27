@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+	.dive{
+		text-align: center;
+	}
+	.login-container {
+		width: 500px;
+		padding: 20px;
+		background-color: #f1f1f1;
+		border-radius: 5px;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+		margin: 30px auto;
+		
+	  }
+	
+	  .login-container h2 {
+		text-align: center;
+		margin-bottom: 10px;
+	  }
+	
+	  .login-container input[type="text"],
+	  .login-container input[type="password"] {
+		width: 100%;
+		padding: 5px;
+		margin-bottom: 10px;
+		border: 1px solid #ccc;
+		border-radius: 3px;
+	  }
+	
+	  .login-container button[type="submit"] {
+		width: 100%;
+		padding: 10px;
+		background-color: grey;
+		border: none;
+		color: white;
+		cursor: pointer;
+		border-radius: 3px;
+	  } 
+</style>
+
+<div class="login-container">
+	<h1 class="dive"> Register </h1>
+<form method="POST" action="">
+    {% csrf_token %}
+    {% if form.errors %}
+			<div class="alert alert-warning alert-dismissible fade show" role="alert">
+			  Your Form Has Errors
+			  {% for field in form %}
+			  	{% if field.errors %}
+			  		{{ field.errors }}
+			  	{% endif %}
+			  {% endfor %}
+			  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+		{% endif %}
+
+    {{form.as_p}}
+
+        <button type="submit" class="btn btn-secondary">Register</button>
+		<br>
+		<label for="">Already a User</label>
+          <a href={% url 'home' %} >Login</a>
+</form>
+</div>
+{% endblock content %}
+
+
+

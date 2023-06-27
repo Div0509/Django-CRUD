@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    .card {
+        margin-top: 20px;
+    }
+</style>
+
+<div class="card">
+    <div class="card-header">
+        {{data_record.Description}}
+    </div>
+    <div class="card-body">
+      <p class="card-text"><br>
+        <strong>Party Name:  </strong>{{data_record.PartyName}}<br>
+        <strong>Description:  </strong>{{data_record.Description}}<br>
+        <strong>DATE:  </strong>{{data_record.create_date}}<br>
+        <strong>Proposal_amount:  </strong>{{data_record.Proposal_amount}}<br>
+        <strong>Provision_availed:  </strong>{{data_record.Provision_availed}}<br>
+        <strong>Balance:  </strong>{{data_record.Balance}}<br></p>
+    </div>
+</div>
+<br><br>
+<a href="{% url 'home' %}" class="btn btn-success">Back</a>
+
+<a href="{% url 'delete_record' data_record.id %}" class="btn btn-danger">Delete</a>
+<a href="{% url 'update_record' data_record.id %}" class="btn btn-success">Update Record</a>
+{% endblock content %}
